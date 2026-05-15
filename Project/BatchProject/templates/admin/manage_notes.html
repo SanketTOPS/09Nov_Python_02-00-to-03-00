@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block title %}Manage Notes - Admin - BatchProject{% endblock %}
+
+{% block content %}
+<div class="glass-card p-8 rounded-2xl shadow-2xl w-full max-w-6xl">
+    <div class="flex justify-between items-center mb-8">
+        <div class="flex items-center">
+            <a href="{% url 'admin_dashboard' %}" class="mr-4 text-gray-400 hover:text-yellow-600">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+            </a>
+            <h2 class="text-3xl font-bold text-gray-800">Note Approvals</h2>
+        </div>
+    </div>
+
+    <div class="overflow-x-auto rounded-xl border border-gray-100">
+        <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+                <tr>
+                    <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Note Info</th>
+                    <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">User</th>
+                    <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Category</th>
+                    <th class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Status</th>
+                    <th class="px-6 py-4 text-center text-xs font-bold text-gray-500 uppercase tracking-wider">Actions</th>
+                </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-100">
+                {% for note in notes %}
+                <tr class="hover:bg-gray-50 transition-colors">
+                    <td class="px-6 py-4">
+                        <div class="text-sm font-bold text-gray-900">{{ note.title }}</div>
+                        <div class="text-xs text-gray-500 truncate max-w-xs">{{ note.description }}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900">{{ note.user.username }}</div>
+                        <div class="text-xs text-gray-500">{{ note.user.email }}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">{{ note.category }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        {% if note.status == 'Approved' %}
+                            <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">Approved</span>
+                        {% elif note.status == 'Rejected' %}
+                            <span class="px-2 py-1 text-xs font-semibold rounded-full bg-red-100 text-red-800">Rejected</span>
+                        {% else %}
+                            <span class="px-2 py-1 text-xs font-semibold rounded-full bg-yellow-100 text-yellow-800">Pending</span>
+                        {% endif %}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium space-x-2">
+                        <a href="{{ note.file.url }}" target="_blank" class="text-blue-600 hover:text-blue-900 mr-4">View File</a>
+                        
+                        {% if note.status == 'Pending' %}
+                            <a href="{% url 'approve_note' note.id %}" class="inline-flex items-center px-3 py-1 bg-green-600 text-white rounded hover:bg-green-700 transition shadow-sm">
+                                Approve
+                            </a>
+                            <a href="{% url 'reject_note' note.id %}" class="inline-flex items-center px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700 transition shadow-sm">
+                                Reject
+                            </a>
+                        {% elif note.status == 'Approved' %}
+                             <a href="{% url 'reject_note' note.id %}" class="text-red-500 hover:underline text-xs">Change to Reject</a>
+                        {% else %}
+                             <a href="{% url 'approve_note' note.id %}" class="text-green-500 hover:underline text-xs">Change to Approve</a>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" class="px-6 py-12 text-center text-gray-500 italic">No notes have been submitted yet.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

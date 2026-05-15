@@ -1,0 +1,215 @@
+{% extends 'base.html' %}
+
+{% block title %}About Us - BatchProject{% endblock %}
+
+{% block content %}
+<div class="glass-card p-12 rounded-2xl shadow-2xl w-full max-w-4xl">
+    <div class="text-center mb-10">
+        <h1 class="text-4xl font-extrabold text-gray-800 mb-4">About BatchProject</h1>
+        <div class="h-1 w-24 bg-yellow-500 mx-auto rounded-full"></div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="space-y-6">
+            <p class="text-lg text-gray-700 leading-relaxed">
+                Welcome to <span class="font-bold text-yellow-600">BatchProject</span>, your premier destination for
+                organized note management and academic collaboration.
+            </p>
+            <p class="text-gray-600 leading-relaxed">
+                Founded in 2026, our mission is to empower students and professionals by providing a secure, streamlined
+                platform to store, categorize, and share knowledge. We believe that well-organized information is the
+                foundation of success.
+            </p>
+            <div class="flex space-x-4">
+                <div class="bg-yellow-100 p-4 rounded-xl">
+                    <h3 class="font-bold text-yellow-700 text-xl">5000+</h3>
+                    <p class="text-sm text-yellow-600">Active Users</p>
+                </div>
+                <div class="bg-gray-100 p-4 rounded-xl">
+                    <h3 class="font-bold text-gray-700 text-xl">12k+</h3>
+                    <p class="text-sm text-gray-600">Notes Shared</p>
+                </div>
+            </div>
+        </div>
+        <div class="relative">
+            <div class="absolute -inset-4 bg-yellow-500/20 rounded-2xl blur-xl"></div>
+            <img src="https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=800&q=80"
+                alt="About Us" class="relative rounded-2xl shadow-lg object-cover h-64 w-full">
+        </div>
+    </div>
+
+    <div class="mt-16 grid md:grid-cols-3 gap-8">
+        <div class="text-center p-6 rounded-xl hover:bg-gray-50 transition">
+            <div class="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center text-white mx-auto mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+            </div>
+            <h3 class="font-bold text-gray-800 mb-2">Secure Storage</h3>
+            <p class="text-sm text-gray-600">Your notes are protected with industry-standard encryption.</p>
+        </div>
+        <div class="text-center p-6 rounded-xl hover:bg-gray-50 transition">
+            <div class="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center text-white mx-auto mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+            </div>
+            <h3 class="font-bold text-gray-800 mb-2">Fast Approval</h3>
+            <p class="text-sm text-gray-600">Our admin team reviews and approves content swiftly.</p>
+        </div>
+        <div class="text-center p-6 rounded-xl hover:bg-gray-50 transition">
+            <div class="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center text-white mx-auto mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+            </div>
+            <h3 class="font-bold text-gray-800 mb-2">Community Driven</h3>
+            <p class="text-sm text-gray-600">Join thousands of others in building a knowledge hub.</p>
+        </div>
+    </div>
+
+    <!-- Testimonials Section -->
+    <div class="mt-20">
+        <h2 class="text-3xl font-bold text-gray-800 text-center mb-10">What Our Users Say</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-white/50 p-6 rounded-2xl border border-yellow-100 shadow-sm">
+                <div class="flex text-yellow-500 mb-4">
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                        <path
+                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                        <path
+                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                        <path
+                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                        <path
+                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                        <path
+                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                </div>
+                <p class="text-gray-600 italic mb-4">"BatchProject has completely changed how I organize my study
+                    materials. The categorization feature is a lifesaver!"</p>
+                <div class="flex items-center">
+                    <img src="https://i.pravatar.cc/150?u=1"
+                        class="w-10 h-10 rounded-full mr-3 border-2 border-yellow-500">
+                    <div>
+                        <h4 class="font-bold text-gray-800 text-sm">Sarah Jenkins</h4>
+                        <p class="text-xs text-gray-500">Medical Student</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white/50 p-6 rounded-2xl border border-yellow-100 shadow-sm">
+                <div class="flex text-yellow-500 mb-4">
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                        <path
+                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                        <path
+                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                        <path
+                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                        <path
+                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                        <path
+                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                </div>
+                <p class="text-gray-600 italic mb-4">"As a professional, I need a reliable place to store my research
+                    notes. This platform is secure and extremely easy to use."</p>
+                <div class="flex items-center">
+                    <img src="https://i.pravatar.cc/150?u=2"
+                        class="w-10 h-10 rounded-full mr-3 border-2 border-yellow-500">
+                    <div>
+                        <h4 class="font-bold text-gray-800 text-sm">Michael Chen</h4>
+                        <p class="text-xs text-gray-500">Software Architect</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white/50 p-6 rounded-2xl border border-yellow-100 shadow-sm">
+                <div class="flex text-yellow-500 mb-4">
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                        <path
+                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                        <path
+                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                        <path
+                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                        <path
+                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+                        <path
+                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                </div>
+                <p class="text-gray-600 italic mb-4">"The best notes app I've ever used. The UI is clean, and the
+                    community aspect makes learning much more interactive."</p>
+                <div class="flex items-center">
+                    <img src="https://i.pravatar.cc/150?u=3"
+                        class="w-10 h-10 rounded-full mr-3 border-2 border-yellow-500">
+                    <div>
+                        <h4 class="font-bold text-gray-800 text-sm">Elena Rodriguez</h4>
+                        <p class="text-xs text-gray-500">Researcher</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- YouTube Videos Section -->
+    <div class="mt-24 mb-8">
+        <h2 class="text-3xl font-bold text-gray-800 text-center mb-10">Product Demonstrations</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="rounded-2xl overflow-hidden shadow-xl border-4 border-white">
+                <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/qLbfTW_hSD0?enablejsapi=1&rel=0"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen></iframe>
+                <div class="p-4 bg-white">
+                    <h4 class="font-bold text-gray-800">Platform Overview</h4>
+                    <p class="text-sm text-gray-600">A quick walkthrough of all core features and tools.</p>
+                </div>
+            </div>
+            <div class="rounded-2xl overflow-hidden shadow-xl border-4 border-white">
+                <iframe class="w-full aspect-video" src="https://www.youtube.com/embed/tCqgavtQPTA?enablejsapi=1&rel=0"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen></iframe>
+                <div class="p-4 bg-white">
+                    <h4 class="font-bold text-gray-800">Advanced Note Management</h4>
+                    <p class="text-sm text-gray-600">Learn how to organize your notes like a pro.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

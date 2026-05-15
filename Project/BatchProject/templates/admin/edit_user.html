@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit User - BatchProject{% endblock %}
+
+{% block content %}
+<div class="glass-card p-8 rounded-2xl shadow-2xl w-full max-w-md">
+    <div class="flex items-center mb-6">
+        <a href="{% url 'admin_dashboard' %}" class="mr-4 text-gray-400 hover:text-yellow-600">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+        </a>
+        <h2 class="text-2xl font-bold text-gray-800">Edit User Info</h2>
+    </div>
+    
+    <form method="post" class="space-y-4">
+        {% csrf_token %}
+        <div>
+            <label class="block text-sm font-medium text-gray-700">Username</label>
+            <input type="text" name="username" value="{{ user_obj.username }}" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-yellow-500 focus:border-yellow-500 transition">
+        </div>
+        <div>
+            <label class="block text-sm font-medium text-gray-700">Email Address</label>
+            <input type="email" name="email" value="{{ user_obj.email }}" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-yellow-500 focus:border-yellow-500 transition">
+        </div>
+        
+        <div class="pt-4">
+            <button type="submit" class="w-full bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-yellow-700 transform hover:scale-[1.02] transition-all duration-200">
+                Update User Information
+            </button>
+        </div>
+    </form>
+    
+    <div class="mt-8 p-4 bg-gray-50 rounded-xl border border-gray-200">
+        <h3 class="text-xs font-bold text-gray-400 uppercase mb-2">Account Metadata</h3>
+        <div class="grid grid-cols-2 gap-2 text-sm">
+            <div class="text-gray-500">Account Created:</div>
+            <div class="text-gray-700 font-medium">{{ user_obj.date_joined|date:"M d, Y" }}</div>
+            <div class="text-gray-500">Last Login:</div>
+            <div class="text-gray-700 font-medium">{{ user_obj.last_login|default:"Never" }}</div>
+        </div>
+    </div>
+</div>
+{% endblock %}

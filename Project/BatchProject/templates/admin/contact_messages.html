@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact Messages - Admin{% endblock %}
+
+{% block content %}
+<div class="w-full max-w-6xl space-y-8">
+    <div class="flex justify-between items-center mb-4">
+        <h2 class="text-3xl font-bold text-gray-800">Contact Form Messages</h2>
+        <a href="{% url 'admin_dashboard' %}" class="text-gray-600 hover:text-yellow-600 font-medium flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            Back to Dashboard
+        </a>
+    </div>
+
+    <div class="glass-card rounded-2xl overflow-hidden shadow-xl">
+        <div class="px-6 py-4 bg-gray-50 border-b border-gray-100">
+            <h3 class="font-bold text-gray-800">All Messages</h3>
+        </div>
+        <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-200">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase">Sender</th>
+                        <th class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase">Subject</th>
+                        <th class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase">Message</th>
+                        <th class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase">Date</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-100">
+                    {% for msg in contact_messages %}
+                    <tr class="hover:bg-gray-50 transition-colors align-top">
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="text-sm font-bold text-gray-900">{{ msg.name }}</div>
+                            <div class="text-xs text-gray-500">{{ msg.email }}</div>
+                        </td>
+                        <td class="px-6 py-4">
+                            <div class="text-sm font-medium text-gray-800">{{ msg.subject }}</div>
+                        </td>
+                        <td class="px-6 py-4">
+                            <div class="text-sm text-gray-600 max-w-md break-words">{{ msg.message }}</div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="text-xs text-gray-400">{{ msg.created_at|date:"M d, Y" }}</div>
+                            <div class="text-[10px] text-gray-400">{{ msg.created_at|time:"H:i" }}</div>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="4" class="px-6 py-10 text-center text-gray-500 italic">
+                            No contact messages found.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

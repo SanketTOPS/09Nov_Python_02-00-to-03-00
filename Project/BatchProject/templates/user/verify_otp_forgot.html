@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Verify OTP - BatchProject{% endblock %}
+
+{% block content %}
+<div class="glass-card p-8 rounded-2xl shadow-2xl w-full max-w-md">
+    <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Verify OTP</h2>
+    <p class="text-gray-600 mb-6 text-center text-sm">Please enter the 6-digit OTP sent to your email to continue with password reset.</p>
+    <form method="post" class="space-y-4">
+        {% csrf_token %}
+        <div>
+            <label class="block text-sm font-medium text-gray-700">6-Digit OTP</label>
+            <input type="text" name="otp" maxlength="6" pattern="\d{6}" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-yellow-500 focus:border-yellow-500 transition text-center text-2xl tracking-widest" placeholder="000000">
+        </div>
+        <button type="submit" class="w-full bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg hover:bg-yellow-700 transform hover:scale-[1.02] transition-all duration-200">
+            Verify OTP
+        </button>
+    </form>
+    <p class="mt-6 text-center text-gray-600 text-sm">
+        Didn't receive code? <a href="{% url 'forgot_password' %}" class="text-yellow-600 font-bold hover:underline">Resend Email</a>
+    </p>
+</div>
+{% endblock %}
