@@ -1,0 +1,160 @@
+{% extends 'social_login/base.html' %}
+
+{% block title %}Dashboard | Welcome {{ full_name }}{% endblock %}
+
+{% block content %}
+<div class="glass-card dashboard-card">
+    <!-- User Profile Details Header -->
+    <div class="user-profile-header">
+        <div class="user-avatar-container">
+            <img src="{{ avatar_url }}" alt="{{ full_name }}'s Avatar" class="user-avatar">
+            
+            {% if provider == 'google' %}
+                <div class="provider-badge google" title="Authenticated with Google">
+                    <i class="fa-brands fa-google"></i>
+                </div>
+            {% elif provider == 'github' %}
+                <div class="provider-badge github" title="Authenticated with GitHub">
+                    <i class="fa-brands fa-github"></i>
+                </div>
+            {% else %}
+                <div class="provider-badge local" title="Authenticated locally">
+                    <i class="fa-solid fa-user-lock"></i>
+                </div>
+            {% endif %}
+        </div>
+        
+        <h2 class="user-name">{{ full_name }}</h2>
+        <p class="user-email">{{ email|default:"No email provided" }}</p>
+    </div>
+
+    <!-- Metadata Details Grid -->
+    <div class="profile-details-grid">
+        <div class="detail-item">
+            <span class="detail-label">Authentication Method</span>
+            <span class="detail-value">
+                {% if provider %}
+                    <i class="fa-solid fa-circle-check" style="color: #34d399; margin-right: 0.25rem;"></i> {{ provider_display }} OAuth
+                {% else %}
+                    Local Account
+                {% endif %}
+            </span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Username</span>
+            <span class="detail-value">{{ user.username }}</span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Account Status</span>
+            <span class="detail-value" style="color: #60a5fa;">Active</span>
+        </div>
+    </div>
+
+    <!-- Actions -->
+    <a href="{% url 'account_logout' %}" class="btn-logout">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        <span>Sign Out Safely</span>
+    </a>
+
+    <!-- Setup Guide Accordion Drawer -->
+    <div class="setup-guide-box">
+        <h3 class="setup-title">
+            <i class="fa-solid fa-gears"></i> Developer Setup Guide
+        </h3>
+        <p style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 1rem; line-height: 1.4;">
+            To test these social logins locally, you'll need to create OAuth applications on Google and GitHub and register them in the Django Admin. Follow the steps below:
+        </p>
+
+        <!-- Accordion Container -->
+        <div class="accordion">
+            
+            <!-- Step 1: Create Superuser -->
+            <div class="accordion-item">
+                <button class="accordion-trigger">
+                    <span>1. Create a Django Superuser</span>
+                    <i class="fa-solid fa-chevron-down accordion-icon"></i>
+                </button>
+                <div class="accordion-content">
+                    <p>Open your command line and run the following command to create an administrator account:</p>
+                    <pre><code>python manage.py createsuperuser</code></pre>
+                    <p>Follow the prompts to enter a username, email, and password. You will use these credentials to log in to the Django Admin panel.</p>
+                </div>
+            </div>
+
+            <!-- Step 2: Google OAuth App Setup -->
+            <div class="accordion-item">
+                <button class="accordion-trigger">
+                    <span>2. Configure Google Cloud Console</span>
+                    <i class="fa-solid fa-chevron-down accordion-icon"></i>
+                </button>
+                <div class="accordion-content">
+                    <ol>
+                        <li>Visit the <a href="https://console.cloud.google.com/" target="_blank" style="color: #60a5fa; text-decoration: underline;">Google Cloud Console</a>.</li>
+                        <li>Create a new project or select an existing one.</li>
+                        <li>Navigate to <strong>APIs & Services</strong> &gt; <strong>OAuth consent screen</strong>. Configure it as <em>External</em> and fill in mandatory fields.</li>
+                        <li>Go to <strong>Credentials</strong>, click <strong>+ Create Credentials</strong>, and select <strong>OAuth client ID</strong>.</li>
+                        <li>Choose <strong>Web application</strong> as the application type.</li>
+                        <li>Under <strong>Authorized redirect URIs</strong>, add:
+                            <pre><code>http://127.0.0.1:8000/accounts/google/login/callback/</code></pre>
+                        </li>
+                        <li>Click <strong>Create</strong> and copy the generated <strong>Client ID</strong> and <strong>Client Secret</strong>.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- Step 3: GitHub OAuth App Setup -->
+            <div class="accordion-item">
+                <button class="accordion-trigger">
+                    <span>3. Configure GitHub OAuth App</span>
+                    <i class="fa-solid fa-chevron-down accordion-icon"></i>
+                </button>
+                <div class="accordion-content">
+                    <ol>
+                        <li>Navigate to your GitHub profile settings &gt; <strong>Developer settings</strong> &gt; <a href="https://github.com/settings/developers" target="_blank" style="color: #60a5fa; text-decoration: underline;">OAuth Apps</a>.</li>
+                        <li>Click the <strong>New OAuth App</strong> button.</li>
+                        <li>Fill in the fields:
+                            <ul>
+                                <li>Application Name: <code>SocialAuth Local</code></li>
+                                <li>Homepage URL: <code>http://127.0.0.1:8000/</code></li>
+                                <li>Authorization callback URL:
+                                    <pre><code>http://127.0.0.1:8000/accounts/github/login/callback/</code></pre>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>Click <strong>Register application</strong>.</li>
+                        <li>Copy the **Client ID** and click <strong>Generate a new client secret</strong>. Save the secret carefully.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- Step 4: Register in Admin Panel -->
+            <div class="accordion-item">
+                <button class="accordion-trigger">
+                    <span>4. Connect Credentials in Django Admin</span>
+                    <i class="fa-solid fa-chevron-down accordion-icon"></i>
+                </button>
+                <div class="accordion-content">
+                    <ol>
+                        <li>Start your server: <pre><code>python manage.py runserver</code></pre></li>
+                        <li>Navigate to <a href="http://127.0.0.1:8000/admin/" target="_blank" style="color: #60a5fa; text-decoration: underline;">http://127.0.0.1:8000/admin/</a> and log in with your superuser.</li>
+                        <li>Under <strong>Sites</strong>, select the existing site (usually `example.com`), modify its domain and display name to:
+                            <pre><code>127.0.0.1:8000</code></pre> and click <strong>Save</strong>.
+                        </li>
+                        <li>Under <strong>Social accounts</strong> &gt; <strong>Social applications</strong>, click <strong>Add social application</strong>:
+                            <ul>
+                                <li><strong>Provider</strong>: Google (or GitHub)</li>
+                                <li><strong>Name</strong>: Google App (or GitHub App)</li>
+                                <li><strong>Client id</strong>: [Paste your Client ID]</li>
+                                <li><strong>Secret key</strong>: [Paste your Client Secret]</li>
+                                <li><strong>Sites</strong>: Select <code>127.0.0.1:8000</code> and click the arrow to move it to "Chosen sites"</li>
+                            </ul>
+                        </li>
+                        <li>Click <strong>Save</strong>. You're fully configured! Logout and test!</li>
+                    </ol>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+{% endblock %}

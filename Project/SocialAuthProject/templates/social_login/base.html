@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Social Login Gateway{% endblock %}</title>
+    
+    <!-- Premium Google Fonts and Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Main Premium Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+    {% block extra_head %}{% endblock %}
+</head>
+<body>
+
+    <!-- Animated Mesh Background -->
+    <div class="bg-gradient-mesh">
+        <div class="glow-sphere sphere-1"></div>
+        <div class="glow-sphere sphere-2"></div>
+        <div class="glow-sphere sphere-3"></div>
+    </div>
+
+    <!-- Application Body Wrapper -->
+    <main class="app-container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Project Footer -->
+    <footer>
+        <div>
+            Developed with <i class="fa-solid fa-heart" style="color: #ef4444; font-size: 0.75rem;"></i> for SocialAuthProject &bull; <a href="{% url 'login' %}">Home</a>
+        </div>
+    </footer>
+
+    <!-- Global Logic Scripts -->
+    <script>
+        // Custom interactive accordions for setup instructions
+        document.addEventListener('DOMContentLoaded', () => {
+            const triggers = document.querySelectorAll('.accordion-trigger');
+            
+            triggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    const item = trigger.closest('.accordion-item');
+                    const isActive = item.classList.contains('accordion-active');
+                    
+                    // Close all other accordion items
+                    document.querySelectorAll('.accordion-item').forEach(otherItem => {
+                        otherItem.classList.remove('accordion-active');
+                    });
+                    
+                    // Toggle active state
+                    if (!isActive) {
+                        item.classList.add('accordion-active');
+                    }
+                });
+            });
+        });
+    </script>
+    
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>
